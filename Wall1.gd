@@ -7,4 +7,21 @@ func _ready():
 		$Picture.queue_free()
 	if (game.vasePickedUp):
 		$Vase.queue_free()
-	$AnimationPlayer.play("door_swinging")
+	updateDoor()
+
+
+func _on_Door_input_event(viewport, event, shape_idx):
+	if (event is InputEventMouseButton && event.pressed):
+		match (game.doorState):
+			game.DoorState.CLOSED:
+				game.doorState = game.DoorState.SEMI_OPEN
+			game.DoorState.SEMI_OPEN:
+				game.doorState = game.DoorState.OPEN
+			game.DoorState.OPEN:
+				game.doorState = game.DoorState.CLOSED
+		updateDoor()
+
+func updateDoor():
+	$AnimationPlayer.current_animation = "door_swinging"
+	$AnimationPlayer.seek(game.doorState, true)
+	$AnimationPlayer.stop(false)
