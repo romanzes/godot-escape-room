@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://InventoryItemBg.tres" type="StyleBox" id=1]
-[ext_resource path="res://images/picture_inventory.png" type="Texture" id=2]
+[ext_resource path="res://InventoryItem.gd" type="Script" id=2]
+[ext_resource path="res://images/picture_inventory.png" type="Texture" id=3]
 
 [node name="Panel" type="Panel"]
 margin_left = 8.0
@@ -12,6 +13,7 @@ rect_min_size = Vector2( 56, 56 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
 custom_styles/panel = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_left = 0.5
@@ -26,5 +28,7 @@ margin_bottom = 24.0
 [node name="TextureButton" type="TextureButton" parent="MarginContainer"]
 margin_right = 48.0
 margin_bottom = 48.0
-texture_normal = ExtResource( 2 )
+texture_normal = ExtResource( 3 )
 expand = true
+
+[connection signal="pressed" from="MarginContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
