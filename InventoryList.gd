@@ -26,6 +26,13 @@ func addItem(name: String):
 	item.get_node("MarginContainer/TextureButton").texture_normal = load(path)
 	add_child(item)
 
+func removeItem(name: String):
+	for item in get_children():
+		if (item.name == name):
+			item.queue_free()
+			if (selectedItem == name):
+				selectedItem = "Null"
+
 func updateSelection(clickedItem: String):
 	for item in get_children():
 		if (item.name != clickedItem):
