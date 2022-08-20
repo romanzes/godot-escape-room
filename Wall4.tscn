@@ -7,7 +7,7 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Wall1" type="Sprite" parent="."]
+[node name="Wall" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
 

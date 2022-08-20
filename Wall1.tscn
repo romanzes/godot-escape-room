@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://images/wall_1.png" type="Texture" id=1]
 [ext_resource path="res://images/picture.png" type="Texture" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://images/arrow_left.png" type="Texture" id=9]
 [ext_resource path="res://images/door_open.png" type="Texture" id=10]
 [ext_resource path="res://Wall1.gd" type="Script" id=11]
+[ext_resource path="res://images/lock_top_part.png" type="Texture" id=12]
+[ext_resource path="res://images/lock_bottom_part.png" type="Texture" id=13]
+[ext_resource path="res://images/door_lock_thingy.png" type="Texture" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "door_swinging"
@@ -71,7 +74,7 @@ extents = Vector2( 65, 110 )
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 11 )
 
-[node name="Wall1" type="Sprite" parent="."]
+[node name="Wall" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
 
@@ -104,5 +107,20 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/Area2D"]
 shape = SubResource( 2 )
+
+[node name="LockTopPart" type="Sprite" parent="Door"]
+position = Vector2( -51.45, -20.3 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 12 )
+
+[node name="DoorLockThingy" type="Sprite" parent="Door"]
+position = Vector2( -51.45, -19.3 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 14 )
+
+[node name="LockBottomPart" type="Sprite" parent="Door"]
+position = Vector2( -51.45, -10.3 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 13 )
 
 [connection signal="input_event" from="Door/Area2D" to="." method="_on_Door_input_event"]

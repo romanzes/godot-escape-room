@@ -1,24 +1,31 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://images/arrow_back.png" type="Texture" id=1]
 [ext_resource path="res://images/door_closeup.png" type="Texture" id=2]
+[ext_resource path="res://images/lock_top_part.png" type="Texture" id=3]
+[ext_resource path="res://images/lock_bottom_part.png" type="Texture" id=4]
+[ext_resource path="res://images/door_lock_thingy.png" type="Texture" id=5]
 [ext_resource path="res://Teleport.tscn" type="PackedScene" id=8]
-
-[sub_resource type="Animation" id=1]
-resource_name = "door_swinging"
-length = 4.0
-loop = true
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Wall1" type="Sprite" parent="."]
+[node name="Wall" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 centered = false
+
+[node name="LockTopPart" type="Sprite" parent="Wall"]
+position = Vector2( 549, 324 )
+texture = ExtResource( 3 )
+
+[node name="DoorLockThingy" type="Sprite" parent="Wall"]
+position = Vector2( 549, 327 )
+texture = ExtResource( 5 )
+
+[node name="LockBottomPart" type="Sprite" parent="Wall"]
+position = Vector2( 549, 357 )
+texture = ExtResource( 4 )
 
 [node name="ArrowBack" parent="." instance=ExtResource( 8 )]
 position = Vector2( 459, 540 )
 texture = ExtResource( 1 )
 scene_path = "res://Wall1.tscn"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/door_swinging = SubResource( 1 )
