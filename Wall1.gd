@@ -14,9 +14,7 @@ func _on_Door_input_event(viewport, event, shape_idx):
 	if (event is InputEventMouseButton && event.pressed):
 		match (game.doorState):
 			game.DoorState.LOCKED:
-				if (game.inventory.selectedItem == "Wrench"):
-					game.doorState = game.DoorState.SEMI_OPEN
-					game.inventory.removeItem("Wrench")
+				game.changeLocation("res://Door_Closeup.tscn")
 			game.DoorState.CLOSED:
 				game.doorState = game.DoorState.SEMI_OPEN
 			game.DoorState.SEMI_OPEN:
