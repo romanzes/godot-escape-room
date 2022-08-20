@@ -108,19 +108,22 @@ texture = ExtResource( 6 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/Area2D"]
 shape = SubResource( 2 )
 
-[node name="LockTopPart" type="Sprite" parent="Door"]
+[node name="Lock" type="Node2D" parent="."]
+position = Vector2( 731, 349 )
+
+[node name="LockTopPart" type="Sprite" parent="Lock"]
 position = Vector2( -51.45, -20.3 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 12 )
 
-[node name="DoorLockThingy" type="Sprite" parent="Door"]
-position = Vector2( -51.45, -19.3 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 14 )
-
-[node name="LockBottomPart" type="Sprite" parent="Door"]
+[node name="LockBottomPart" type="Sprite" parent="Lock"]
 position = Vector2( -51.45, -10.3 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 13 )
+
+[node name="DoorLockThingy" type="Sprite" parent="Lock"]
+position = Vector2( -51.45, -19.3 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 14 )
 
 [connection signal="input_event" from="Door/Area2D" to="." method="_on_Door_input_event"]

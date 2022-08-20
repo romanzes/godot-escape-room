@@ -1,31 +1,78 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://images/arrow_back.png" type="Texture" id=1]
 [ext_resource path="res://images/door_closeup.png" type="Texture" id=2]
 [ext_resource path="res://images/lock_top_part.png" type="Texture" id=3]
 [ext_resource path="res://images/lock_bottom_part.png" type="Texture" id=4]
 [ext_resource path="res://images/door_lock_thingy.png" type="Texture" id=5]
+[ext_resource path="res://Door_Closeup.gd" type="Script" id=6]
 [ext_resource path="res://Teleport.tscn" type="PackedScene" id=8]
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 35, 50 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "lock_opening"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Wall/Lock/LockTopPart:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -30 ), Vector2( 0, -66 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Wall/Lock/LockBottomPart:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 8 ) ]
+}
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 6 )
 
 [node name="Wall" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 centered = false
 
-[node name="LockTopPart" type="Sprite" parent="Wall"]
-position = Vector2( 549, 324 )
+[node name="Lock" type="Node2D" parent="Wall"]
+position = Vector2( 549, 357 )
+
+[node name="LockTopPart" type="Sprite" parent="Wall/Lock"]
+position = Vector2( 0, -30 )
 texture = ExtResource( 3 )
+
+[node name="LockBottomPart" type="Sprite" parent="Wall/Lock"]
+texture = ExtResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="Wall/Lock"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/Lock/Area2D"]
+position = Vector2( 0, -15 )
+shape = SubResource( 2 )
 
 [node name="DoorLockThingy" type="Sprite" parent="Wall"]
 position = Vector2( 549, 327 )
+z_index = 1
 texture = ExtResource( 5 )
-
-[node name="LockBottomPart" type="Sprite" parent="Wall"]
-position = Vector2( 549, 357 )
-texture = ExtResource( 4 )
 
 [node name="ArrowBack" parent="." instance=ExtResource( 8 )]
 position = Vector2( 459, 540 )
 texture = ExtResource( 1 )
 scene_path = "res://Wall1.tscn"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/lock_opening = SubResource( 3 )
+
+[connection signal="input_event" from="Wall/Lock/Area2D" to="." method="_on_Lock_input_event"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

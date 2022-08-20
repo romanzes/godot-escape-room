@@ -7,6 +7,8 @@ func _ready():
 		$Picture.queue_free()
 	if (game.vasePickedUp):
 		$Vase.queue_free()
+	if (game.doorState != game.DoorState.LOCKED):
+		$Lock.queue_free()
 	updateDoor()
 
 
