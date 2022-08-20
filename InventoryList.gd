@@ -21,6 +21,9 @@ func addItem(name: String):
 		"Wrench":
 			path = "res://images/wrench_inventory.png"
 			game.wrenchPickedUp = true
+		"Key":
+			path = "res://images/key_inventory.png"
+			game.keyPickedUp = true
 	var item = InventoryItem.instance()
 	item.name = name
 	item.get_node("MarginContainer/TextureButton").texture_normal = load(path)

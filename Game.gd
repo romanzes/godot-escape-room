@@ -7,6 +7,7 @@ var clockPickedUp: bool = false
 var picturePickedUp: bool = false
 var vasePickedUp: bool = false
 var wrenchPickedUp: bool = false
+var keyPickedUp: bool = false
 
 enum DoorState { LOCKED, CLOSED, SEMI_OPEN, OPEN }
 var doorState = DoorState.LOCKED

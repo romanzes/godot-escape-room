@@ -4,8 +4,10 @@ onready var game = get_node("/root/Node2D/")
 
 func _on_Lock_input_event(viewport, event, shape_idx):
 	if (event is InputEventMouseButton && event.pressed):
-		game.doorState = game.DoorState.CLOSED
-		$AnimationPlayer.play("lock_opening")
+		if (game.inventory.selectedItem == "Key"):
+			game.doorState = game.DoorState.CLOSED
+			game.inventory.removeItem("Key")
+			$AnimationPlayer.play("lock_opening")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if (anim_name == "lock_opening"):
