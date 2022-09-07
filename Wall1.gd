@@ -29,3 +29,8 @@ func updateDoor():
 	$AnimationPlayer.current_animation = "door_swinging"
 	$AnimationPlayer.seek(game.doorState, true)
 	$AnimationPlayer.stop(false)
+
+
+func _on_Window_input_event(viewport, event, shape_idx):
+	if (event is InputEventMouseButton && event.pressed):
+		game.changeLocation("res://pipes/PipePuzzle.tscn")
