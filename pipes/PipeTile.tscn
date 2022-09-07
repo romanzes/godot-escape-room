@@ -11,12 +11,14 @@ script = ExtResource( 2 )
 [node name="ColorRect1" type="ColorRect" parent="."]
 margin_right = 100.0
 margin_bottom = 100.0
+mouse_filter = 1
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 98.0
 margin_bottom = 98.0
+mouse_filter = 1
 color = Color( 0.152941, 0.0862745, 0.0862745, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
