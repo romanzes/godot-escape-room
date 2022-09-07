@@ -3,10 +3,10 @@ extends Node2D
 onready var PipeTile = preload('res://pipes/PipeTile.tscn')
 
 const INIT_FIELD = [
-	[0, 1, 2, 3],
-	[4, 5, 6, 7],
-	[1, 2, 3, 4],
-	[5, 6, 7, 1]
+	[0, 2, 3, 4],
+	[6, 1, 3, 1],
+	[1, 6, 1, 7],
+	[5, 5, 4, 1]
 ]
 
 const field = []
