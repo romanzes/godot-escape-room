@@ -41,6 +41,9 @@ func _on_tile_pressed(x, y):
 			for tile_y in range(hole_y, y):
 				field[tile_y][x] = field[tile_y + 1][x]
 				field[tile_y][x].move_to(x, tile_y)
+		field[y][x] = null
+		hole_x = x
+		hole_y = y
 	elif (y == hole_y):
 		if (x < hole_x):
 			for tile_x in range(hole_x, x, -1):
@@ -50,6 +53,6 @@ func _on_tile_pressed(x, y):
 			for tile_x in range(hole_x, x):
 				field[y][tile_x] = field[y][tile_x + 1]
 				field[y][tile_x].move_to(tile_x, y)
-	field[y][x] = null
-	hole_x = x
-	hole_y = y
+		field[y][x] = null
+		hole_x = x
+		hole_y = y
