@@ -34,8 +34,9 @@ func setup(x: int, y: int, type: int):
 func move_to(x: int, y: int):
 	self.x = x
 	self.y = y
-	rect_position.x = rect_size.x * x
-	rect_position.y = rect_size.y * y
+	var new_position = Vector2(rect_size.x * x, rect_size.y * y)
+	$Tween.interpolate_property(self, "rect_position", null, new_position, 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
+	$Tween.start()
 
 func _on_Tile_pressed():
 	emit_signal("tile_pressed", x, y)
