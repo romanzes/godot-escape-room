@@ -28,8 +28,10 @@ func _ready():
 func _on_tile_pressed(x, y):
 	if (selected_tile.x == -1 || selected_tile.y == -1):
 		selected_tile = Vector2(x, y)
+		field[y][x].set_selected(true)
 	else:
 		if (selected_tile.x == x && selected_tile.y == y):
+			field[y][x].set_selected(false)
 			selected_tile = Vector2(-1, -1)
 		else:
 			var selected_x = selected_tile.x
