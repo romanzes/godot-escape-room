@@ -33,4 +33,4 @@ func updateDoor():
 
 func _on_Window_input_event(viewport, event, shape_idx):
 	if (event is InputEventMouseButton && event.pressed):
-		game.changeLocation("res://pipes/PipePuzzle.tscn")
+		game.changeLocation("res://pipes2/PipePuzzle.tscn")
