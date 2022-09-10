@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://pipes2/PipePuzzle.gd" type="Script" id=1]
+[ext_resource path="res://images/pipe_straight.png" type="Texture" id=2]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -10,3 +11,31 @@ margin_left = 337.0
 margin_top = 90.0
 margin_right = 737.0
 margin_bottom = 490.0
+
+[node name="YellowPipeStart" type="Sprite" parent="Board"]
+modulate = Color( 1, 1, 0, 1 )
+position = Vector2( 0, -100 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="YellowPipeEnd" type="Sprite" parent="Board"]
+modulate = Color( 1, 1, 0, 1 )
+position = Vector2( 100, 400 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="BluePipeStart" type="Sprite" parent="Board"]
+modulate = Color( 0, 0, 1, 1 )
+position = Vector2( 200, -100 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="BluePipeEnd" type="Sprite" parent="Board"]
+modulate = Color( 0, 0, 1, 1 )
+position = Vector2( 0, 400 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+centered = false

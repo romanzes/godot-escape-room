@@ -2,38 +2,62 @@ extends Node2D
 
 signal tile_pressed
 
+const PipeLayer = preload('res://pipes2/PipeLayer.tscn')
+
 var x: int
 var y: int
 var selected: bool
 
-onready var sprite = get_node("Button/Sprite")
+enum Direction { UP = 0, RIGHT = 1, DOWN = 2, LEFT = 3 }
+
+class Layer:
+	var start: int
+	var end: int
+	
+	func _init(start, end):
+		self.start = start
+		self.end = end
+
+var layers = []
 
 # Class Constructor
 func setup(x: int, y: int, type: int):
-	var sprite = $Button/Sprite
 	match type:
 		1:
-			sprite.texture = load("res://images/pipe_straight.png")
+			add_layer("res://images/pipe_straight.png")
+			layers = [Layer.new(Direction.UP, Direction.DOWN)]
 		2:
-			sprite.texture = load("res://images/pipe_straight.png")
-			sprite.rotation_degrees = 90
+			add_layer("res://images/pipe_straight.png", 90)
+			layers = [Layer.new(Direction.LEFT, Direction.RIGHT)]
 		3:
-			sprite.texture = load("res://images/pipe_bent.png")
+			add_layer("res://images/pipe_bent.png")
+			layers = [Layer.new(Direction.DOWN, Direction.RIGHT)]
 		4:
-			sprite.texture = load("res://images/pipe_bent.png")
-			sprite.rotation_degrees = 90
+			add_layer("res://images/pipe_bent.png", 90)
+			layers = [Layer.new(Direction.LEFT, Direction.DOWN)]
 		5:
-			sprite.texture = load("res://images/pipe_bent.png")
-			sprite.rotation_degrees = 180
+			add_layer("res://images/pipe_bent.png", 180)
+			layers = [Layer.new(Direction.UP, Direction.LEFT)]
 		6:
-			sprite.texture = load("res://images/pipe_bent.png")
-			sprite.rotation_degrees = 270
+			add_layer("res://images/pipe_bent.png", 270)
+			layers = [Layer.new(Direction.RIGHT, Direction.UP)]
 		7:
-			sprite.texture = load("res://images/pipe_crossed.png")
+			add_layer("res://images/pipe_straight.png")
+			add_layer("res://images/pipe_straight.png", 90)
+			layers = [
+				Layer.new(Direction.UP, Direction.DOWN),
+				Layer.new(Direction.LEFT, Direction.RIGHT)
+			]
 	self.x = x
 	self.y = y
 	position.x = $Button.rect_size.x * (x + 0.5)
 	position.y = $Button.rect_size.y * (y + 0.5)
+
+func add_layer(res: String, rotation: int = 0):
+	var sprite = PipeLayer.instance()
+	sprite.texture = load(res)
+	sprite.rotation_degrees = rotation
+	$Button.add_child(sprite)
 
 func move_to(x: int, y: int):
 	self.x = x
