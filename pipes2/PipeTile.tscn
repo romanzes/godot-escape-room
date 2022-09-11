@@ -22,7 +22,7 @@ margin_top = 2.0
 margin_right = 98.0
 margin_bottom = 98.0
 mouse_filter = 1
-color = Color( 0.152941, 0.0862745, 0.0862745, 1 )
+color = Color( 0.282353, 0.247059, 0.247059, 1 )
 
 [node name="Layers" type="Node2D" parent="Button"]
 
