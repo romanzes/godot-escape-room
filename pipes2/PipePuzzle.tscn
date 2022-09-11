@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://pipes2/PipePuzzle.gd" type="Script" id=1]
 [ext_resource path="res://images/pipe_straight.png" type="Texture" id=2]
+[ext_resource path="res://Teleport.tscn" type="PackedScene" id=3]
+[ext_resource path="res://images/arrow_right.png" type="Texture" id=4]
+[ext_resource path="res://images/arrow_left.png" type="Texture" id=5]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -39,3 +42,13 @@ position = Vector2( 0, 400 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 centered = false
+
+[node name="ArrowLeft" parent="." instance=ExtResource( 3 )]
+position = Vector2( 36, 388 )
+texture = ExtResource( 5 )
+scene_path = "res://Wall1.tscn"
+
+[node name="ArrowRight" parent="." instance=ExtResource( 3 )]
+position = Vector2( 984, 388 )
+texture = ExtResource( 4 )
+scene_path = "res://Wall1.tscn"
