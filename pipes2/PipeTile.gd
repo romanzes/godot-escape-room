@@ -13,12 +13,15 @@ enum Direction { UP = 0, RIGHT = 1, DOWN = 2, LEFT = 3 }
 class Layer:
 	var start: int
 	var end: int
+	var color: int = PipeColor.NEUTRAL
 	
 	func _init(start, end):
 		self.start = start
 		self.end = end
 
 var layers = []
+
+enum PipeColor { NEUTRAL = 0, YELLOW = 1, BLUE = 2, RED = 3 }
 
 # Class Constructor
 func setup(x: int, y: int, type: int):
@@ -57,7 +60,7 @@ func add_layer(res: String, rotation: int = 0):
 	var sprite = PipeLayer.instance()
 	sprite.texture = load(res)
 	sprite.rotation_degrees = rotation
-	$Button.add_child(sprite)
+	$Button/Layers.add_child(sprite)
 
 func move_to(x: int, y: int):
 	self.x = x
@@ -77,6 +80,19 @@ func set_selected(selected: bool):
 	else:
 		$ScaleTween.interpolate_property(self, "scale", null, Vector2(1.0, 1.0), 0.3, Tween.TRANS_QUART, Tween.EASE_OUT)
 		$ScaleTween.start()
+
+func repaint_layers():
+	for layer_id in layers.size():
+		var layer_view = $Button/Layers.get_child(layer_id)
+		match layers[layer_id].color:
+			PipeColor.NEUTRAL:
+				layer_view.modulate = Color.white
+			PipeColor.YELLOW:
+				layer_view.modulate = Color.yellow
+			PipeColor.BLUE:
+				layer_view.modulate = Color.blue
+			PipeColor.RED:
+				layer_view.modulate = Color.red
 
 func _on_Tile_pressed():
 	emit_signal("tile_pressed", x, y)

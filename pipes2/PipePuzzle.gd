@@ -1,6 +1,8 @@
 extends Node2D
 
-onready var PipeTile = preload('res://pipes2/PipeTile.tscn')
+const PipeTile = preload('res://pipes2/PipeTile.tscn')
+const PipeColor = preload("res://pipes2/PipeTile.gd").PipeColor
+const Direction = preload("res://pipes2/PipeTile.gd").Direction
 
 const INIT_FIELD = [
 	[2, 2, 3, 4],
@@ -42,3 +44,19 @@ func _on_tile_pressed(x, y):
 			field[y][x].move_to(x, y)
 			field[selected_y][selected_x].move_to(selected_x, selected_y)
 			selected_tile = Vector2(-1, -1)
+			repaint_pipes()
+
+func repaint_pipes():
+	for y in field.size():
+		for x in field[y].size():
+			for layer in field[y][x].layers:
+				layer.color = PipeColor.NEUTRAL
+	paint_pipe(PipeColor.YELLOW, 0, 0, Direction.UP)
+	for y in field.size():
+		for x in field[y].size():
+			field[y][x].repaint_layers()
+
+func paint_pipe(color: int, x: int, y: int, direction: int):
+	for layer in field[y][x].layers:
+		if (layer.start == direction || layer.end == direction):
+			layer.color = color
