@@ -1,6 +1,7 @@
 extends Node2D
 
 signal tile_pressed
+signal move_completed
 
 const PipeLayer = preload('res://pipes2/PipeLayer.tscn')
 
@@ -101,3 +102,4 @@ func _on_Tile_pressed():
 func _on_MoveTween_all_completed():
 	z_index = 0
 	set_selected(false)
+	emit_signal("move_completed")

@@ -44,7 +44,7 @@ func _on_tile_pressed(x, y):
 			field[y][x].move_to(x, y)
 			field[selected_y][selected_x].move_to(selected_x, selected_y)
 			selected_tile = Vector2(-1, -1)
-			repaint_pipes()
+			field[y][x].connect("move_completed", self, "on_move_completed")
 
 func repaint_pipes():
 	for y in field.size():
@@ -60,3 +60,6 @@ func paint_pipe(color: int, x: int, y: int, direction: int):
 	for layer in field[y][x].layers:
 		if (layer.start == direction || layer.end == direction):
 			layer.color = color
+
+func on_move_completed():
+	repaint_pipes()
