@@ -62,9 +62,13 @@ func repaint_pipes():
 func paint_pipe(color: int, x: int, y: int, direction: int):
 	for layer in field[y][x].layers:
 		if (layer.start == direction):
+			if (layer.color != color && layer.color != PipeColor.NEUTRAL):
+				color = PipeColor.RED
 			layer.color = color
 			find_and_paint_next_pipe(color, x, y, layer.end)
 		elif (layer.end == direction):
+			if (layer.color != color && layer.color != PipeColor.NEUTRAL):
+				color = PipeColor.RED
 			layer.color = color
 			find_and_paint_next_pipe(color, x, y, layer.start)
 
