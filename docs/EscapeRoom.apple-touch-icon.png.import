@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/EscapeRoom.apple-touch-icon.png-1045dcebb516fa1289aae0f2d940ca4e.stex"
+path="res://.import/EscapeRoom.apple-touch-icon.png-d07c0b9f1f7c0d2e819685d4b71a1523.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://EscapeRoom.apple-touch-icon.png"
-dest_files=[ "res://.import/EscapeRoom.apple-touch-icon.png-1045dcebb516fa1289aae0f2d940ca4e.stex" ]
+source_file="res://docs/EscapeRoom.apple-touch-icon.png"
+dest_files=[ "res://.import/EscapeRoom.apple-touch-icon.png-d07c0b9f1f7c0d2e819685d4b71a1523.stex" ]
 
 [params]
 

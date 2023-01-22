@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/EscapeRoom.png-3e1f8b30427297694f77f8ba5d417c10.stex"
+path="res://.import/EscapeRoom.png-bb900ca77a7f22de5d7278d9812d177c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://EscapeRoom.png"
-dest_files=[ "res://.import/EscapeRoom.png-3e1f8b30427297694f77f8ba5d417c10.stex" ]
+source_file="res://docs/EscapeRoom.png"
+dest_files=[ "res://.import/EscapeRoom.png-bb900ca77a7f22de5d7278d9812d177c.stex" ]
 
 [params]
 
